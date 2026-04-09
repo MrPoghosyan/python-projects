@@ -1,0 +1,238 @@
+debian@debian:~$ history
+    1  clear
+    2  sudo apt install docker-compose -y
+    3  systemctl status docker-compose
+    4  sudo reboot
+    5  ls
+    6  docker compose version
+    7  sudo apt install docker-compose -y
+    8  sudo systemctl status ssh
+    9  ss -tlnp | grep 22
+   10  sudo reboot
+   11  sudo vim /etc/ssh/sshd_config
+   12  vim /etc/ssh/sshd_config.d/
+   13  sudo vim /etc/ssh/sshd_config
+   14  ip a
+   15  sudo vim /etc/ssh/sshd_config
+   16  systemctl restart ssh
+   17  sudo systemctl restart ssh
+   18  sudo systemctl status ssh
+   19  ls -a
+   20  cd 
+   21  ls -a
+   22  cd /home/
+   23  ls
+   24  ls -a
+   25  cd
+   26  ls -la
+   27  mkdir -p ~/.ssh
+   28  cdmod 700 ~/.ssh/
+   29  sudo cdmod 700 ~/.ssh/
+   30  sudo chmod 700 ~/.ssh/
+   31  ssh-keygen 
+   32  ls
+   33  sudo vim /etc/ssh/sshd_config
+   34  sudo systemctl restart ssh
+   35  sudo vim ~/.ssh/config
+   36  ssh myvm
+   37  vim /etc/ssh/sshd_config
+   38  sudo vim /etc/ssh/sshd_config
+   39  sudo systemctl restart ssh
+   40  sudo vim /etc/ssh/sshd_config
+   41  sudo systemctl restart ssh
+   42  sudo vim /etc/ssh/sshd_config
+   43  sudo systemctl restart ssh
+   44  sudo vim /etc/ssh/sshd_config
+   45  sudo systemctl restart ssh
+   46  sudo vim /etc/ssh/sshd_config.d/*.config
+   47  sudo journalcti -u ssh -n 50
+   48  sudo tail -f /var/log/auth.log
+   49  sudo passwd -S debian
+   50  sudo reboot
+   51  sud shutdown -r now
+   52  sudo shutdown -r now
+   53  checkup-storage 
+   54  mkdir /opt/docker/dockercompose/mariadb-client
+   55  sudo mkdir /opt/docker/dockercompose/mariadb-client
+   56  vim mydb/Dockerfile 
+   57  docker build -t mariadb-client ./mariadb-client
+   58  docker build -t mariadb-client /opt/docker/dockercompose/mariadb-client
+   59  docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+   60  vim mydb/Dockerfile 
+   61  sudo vim /opt/docker/dockercompose/mariadb-client/Dockerfile
+   62  cd /opt/docker/dockercompose/mariadb-client
+   63  sudo docker build -t mariadb-client .
+   64  sudo docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+   65  vim Dockerfile 
+   66  sudo vim Dockerfile 
+   67  sudo docker build -t mariadb-client .
+   68  sudo docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+   69  docker network inspect debian_dockercompose-frontend
+   70  cd
+   71  docker-compose down
+   72  docker-compose up -d
+   73  docker network inspect debian_dockercompose-frontend
+   74  docker-compose exec frontend ping mydb 
+   75  sudo docker run --rm --network debian_dockercompose-frontend -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+   76  docker exec -it mydb bash
+   77  docker ps
+   78  chmod -R 755 /var/lib/mysql
+   79  checkup-compose 
+   80  vim docker-compose.yml 
+   81  cat docker-compose.yml 
+   82  cat mydb/Dockerfile frontend/Dockerfile 
+   83  cat /opt/docker/dockercompose/mariadb-client/Dockerfile 
+   84  ls
+   85  mv frontend/ /opt/docker/dockercompose/.
+   86  sudo mv frontend/ /opt/docker/dockercompose/.
+   87  sudo mv mydb/ /opt/docker/dockercompose/.
+   88  ls * /opt/docker/dockercompose/
+   89  ls /opt/docker/dockercompose/*
+   90  vim /opt/docker/dockercompose/frontend/Dockerfile 
+   91  vim /opt/docker/dockercompose/mydb/Dockerfile 
+   92  sudo vim /opt/docker/dockercompose/mydb/Dockerfile 
+   93  sudo vim /opt/docker/dockercompose/docker-compose.yml
+   94  ls
+   95  rm docker-compose.yml 
+   96  ls
+   97  sudo mv task-13 /opt/docker/dockercompose/.
+   98  ls /opt/docker/dockercompose/
+   99  rm task-13/
+  100  rm -rf task-13/
+  101  sudo rm -rf task-13/
+  102  ls
+  103  cd /opt/docker/dockercompose/
+  104  ls
+  105  docker-compose down -v
+  106  ls
+  107  sudo vim /opt/docker/dockercompose/docker-compose.yml
+  108  clear
+  109  docker-compose down -v
+  110  docker-compose up -d --build 
+  111  docker-compose down -v
+  112  vim docker-compose.yml 
+  113  sudo vim docker-compose.yml 
+  114  docker-compose up -d --build 
+  115  exit
+  116  exit
+  117  clear
+  118  cd /opt/docker/final-task1/
+  119  ls
+  120  sudo vim docker-compose.yml 
+  121  ls
+  122  docker ps
+  123  docker-compose down 
+  124  docker compose down 
+  125  docker compose up -d --build
+  126  checkup-final1
+  127  sudo vim wp-config.php 
+  128  checkup-final1
+  129  docker compose down 
+  130  docker compose up -d --build
+  131  checkup-final1
+  132  cat *
+  133  sudo vim docker-compose.yml 
+  134  docker compose down 
+  135  docker compose up -d --build
+  136  checkup-final1
+  137  cat docker-compose.yml 
+  138  sudo vim docker-compose.yml 
+  139  docker compose down 
+  140  docker compose down -v
+  141  docker compose up -d --build
+  142  checkup-final1
+  143  cat docker-compose.yml 
+  144  checkup-final1
+  145  docker inspect hlebsur/mysql:8 | grep -i env -A 20
+  146  docker inspect hlebsur/mysql:8
+  147  ls
+  148  cd ..
+  149  ls
+  150  sudo cp -r /opt/docker/source/final-task-2 .
+  151  ls
+  152  cd final-task-2/
+  153  ls
+  154  clear
+  155  vim Dockerfile 
+  156  vim docker-compose.yml 
+  157  cat *
+  158  vim Dockerfile 
+  159  sudo vim Dockerfile 
+  160  sudo vim docker-compose.yml 
+  161  cd ..
+  162  ls
+  163  sudo mv final-task-2/ final-task2
+  164  ls
+  165  cd final-task2/
+  166  ls
+  167  docker compose up --build -d
+  168  vim docker-compose.yml 
+  169  ls
+  170  mv Dockerfile Dockerfile_broken
+  171  sudo mv Dockerfile Dockerfile_broken
+  172  ls
+  173  mkdir docker_folder
+  174  sudo mkdir docker_folder
+  175  ls
+  176  sudo mv Dockerfile_broken docker_folder/
+  177  ls
+  178  docker compose up --build -d
+  179  cat *
+  180  ls
+  181  tree
+  182  ls *
+  183  cat docker-compose.yml 
+  184  cat docker_folder/Dockerfile_broken 
+  185  sudo vim docker-compose.yml 
+  186  docker compose up --build -d
+  187  sudo lsof -i :8080
+  188  sudo ss -tulpn | grep 8080
+  189  docker ps
+  190  docker compose down
+  191  docker compose down -v
+  192  cd ../final-task1/
+  193  docker compose down -v
+  194  cd -
+  195  ls
+  196  docker compose up --build -d
+  197  docker ps -a
+  198  checkup-final2
+  199  vim docker-compose.yml 
+  200  vim docker_folder/Dockerfile_broken 
+  201  sudo vim docker_folder/Dockerfile_broken 
+  202  docker compose down -v
+  203  docker compose up --build -d
+  204  checkup-final2
+  205  sudo vim docker-compose.yml 
+  206  sudo vim docker_folder/Dockerfile_broken 
+  207  docker compose down -v
+  208  docker compose up --build -d
+  209  checkup-final2
+  210  cat docker-compose.yml 
+  211  cat docker_folder/Dockerfile_broken 
+  212  sudo vim docker_folder/Dockerfile_broken 
+  213  sudo vim docker-compose.yml 
+  214  docker compose down -v
+  215  docker compose up --build -d
+  216  docker ps
+  217  docker logs -f final-task2-petclinic-1
+  218  checkup-final2
+  219  sudo vim docker_folder/Dockerfile_broken 
+  220  docker compose up --build -d
+  221  checkup-final2
+  222  sudo vim docker_folder/Dockerfile_broken 
+  223  docker compose up --build -d
+  224  checkup-final2
+  225  docker compose down -v
+  226  docker compose up --build -d
+  227  checkup-final2
+  228  checkup-final1
+  229  checkup-final2
+  230  ls
+  231  cd ..
+  232  ls
+  233  cd
+  234  ls
+  235  ls -a
+  236  history
+

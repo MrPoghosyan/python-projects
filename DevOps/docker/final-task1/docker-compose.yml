@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  my-awesome-database:
+    container_name: my-awesome-database
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - my-awesome-network
+
+  my-awesome-wordpress:
+    container_name: my-awesome-wordpress
+    build: .
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - my-awesome-database
+    networks:
+      - my-awesome-network
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_HOST: my-awesome-database:3306
+    volumes:
+      - wordpress:/var/www/html
+      - ./wp-config.php:/var/www/html/wp-config.php
+
+volumes:
+  mysql:
+  wordpress:
+
+networks:
+  my-awesome-network:
+    driver: bridge

@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  mydb:
+    build: ./mydb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: mydb
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - dockercompose-frontend
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 15s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mydb
+      PMA_PORT: 3306
+    depends_on:
+      mydb:
+        condition: service_healthy
+    networks:
+      - dockercompose-frontend
+
+volumes:
+  mysql_data:
+
+networks:
+  dockercompose-frontend:
+        name: dockercompose-frontend

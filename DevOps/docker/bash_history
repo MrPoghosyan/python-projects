@@ -1,0 +1,117 @@
+
+clear
+sudo apt install docker-compose -y
+systemctl status docker-compose
+sudo reboot
+ls
+docker compose version
+sudo apt install docker-compose -y
+sudo systemctl status ssh
+ss -tlnp | grep 22
+sudo reboot
+sudo vim /etc/ssh/sshd_config
+vim /etc/ssh/sshd_config.d/
+sudo vim /etc/ssh/sshd_config
+ip a
+sudo vim /etc/ssh/sshd_config
+systemctl restart ssh
+sudo systemctl restart ssh
+sudo systemctl status ssh
+ls -a
+cd 
+ls -a
+cd /home/
+ls
+ls -a
+cd
+ls -la
+mkdir -p ~/.ssh
+cdmod 700 ~/.ssh/
+sudo cdmod 700 ~/.ssh/
+sudo chmod 700 ~/.ssh/
+ssh-keygen 
+ls
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+sudo vim ~/.ssh/config
+ssh myvm
+vim /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+sudo vim /etc/ssh/sshd_config
+sudo systemctl restart ssh
+sudo vim /etc/ssh/sshd_config.d/*.config
+sudo journalcti -u ssh -n 50
+sudo tail -f /var/log/auth.log
+sudo passwd -S debian
+sudo reboot
+sud shutdown -r now
+sudo shutdown -r now
+checkup-storage 
+mkdir /opt/docker/dockercompose/mariadb-client
+sudo mkdir /opt/docker/dockercompose/mariadb-client
+vim mydb/Dockerfile 
+docker build -t mariadb-client ./mariadb-client
+docker build -t mariadb-client /opt/docker/dockercompose/mariadb-client
+docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+vim mydb/Dockerfile 
+sudo vim /opt/docker/dockercompose/mariadb-client/Dockerfile
+cd /opt/docker/dockercompose/mariadb-client
+sudo docker build -t mariadb-client .
+sudo docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+vim Dockerfile 
+sudo vim Dockerfile 
+sudo docker build -t mariadb-client .
+sudo docker run --rm --network debian_dockercompose-frontend -v mysql_data:/var/lib/mysql -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+docker network inspect debian_dockercompose-frontend
+cd
+docker-compose down
+docker-compose up -d
+docker network inspect debian_dockercompose-frontend
+docker-compose exec frontend ping mydb 
+sudo docker run --rm --network debian_dockercompose-frontend -v /opt/docker/dockercompose/task-13:/backup mariadb-client sh -c 'mysqldump -h mydb -uroot -prootpass mydb > /backup/mydb.sql'
+docker exec -it mydb bash
+docker ps
+chmod -R 755 /var/lib/mysql
+checkup-compose 
+vim docker-compose.yml 
+cat docker-compose.yml 
+cat mydb/Dockerfile frontend/Dockerfile 
+cat /opt/docker/dockercompose/mariadb-client/Dockerfile 
+ls
+mv frontend/ /opt/docker/dockercompose/.
+sudo mv frontend/ /opt/docker/dockercompose/.
+sudo mv mydb/ /opt/docker/dockercompose/.
+ls * /opt/docker/dockercompose/
+ls /opt/docker/dockercompose/*
+vim /opt/docker/dockercompose/frontend/Dockerfile 
+vim /opt/docker/dockercompose/mydb/Dockerfile 
+sudo vim /opt/docker/dockercompose/mydb/Dockerfile 
+sudo vim /opt/docker/dockercompose/docker-compose.yml
+ls
+rm docker-compose.yml 
+ls
+sudo mv task-13 /opt/docker/dockercompose/.
+ls /opt/docker/dockercompose/
+rm task-13/
+rm -rf task-13/
+sudo rm -rf task-13/
+ls
+cd /opt/docker/dockercompose/
+ls
+docker-compose down -v
+ls
+sudo vim /opt/docker/dockercompose/docker-compose.yml
+clear
+docker-compose down -v
+docker-compose up -d --build 
+docker-compose down -v
+vim docker-compose.yml 
+sudo vim docker-compose.yml 
+docker-compose up -d --build 
+exit
+exit
