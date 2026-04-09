@@ -1,0 +1,212 @@
+Քեզ տամ տեքստ որը դոկեր առաջադրանք ա։ դու դա կազմի նեց որ դառնա ռեադմի, որ ավելացնեմ github: Բայց նեց կգրես որ միանգամից copy paste անեմ։
+
+Practical tasks
+After completion of all the practical tasks for this lesson, run checkup-storage in the course VM to verify your results. The command will check your work and show some secret phrases. The phrases should be entered into the appropriate fields below tasks.
+
+Task 1
+Run a container in detached mode from alpine:3.17 image and using the argument -v [host-src]:[container-dest] bind mount the following directory /opt/docker/storage/task1 from your host machine into the directory /home inside the container.
+Using command docker exec, run shell command for this container, go to the directory /home inside the container and create 2 files: myfile1 containing the string Hello world!, and myfile2 containing the string Hello from EPAM!.
+Exit from the container and check that these 2 files (which you created inside the container) also exist in the directory /opt/docker/storage/task1. Delete the file myfile1, go again into the container and check that file doesn't exist there too (myfile2 should still exist).
+Also check with docker volume ls command if there were created any volumes or not.
+Task 2
+Run a container in detached mode with name mypostgres from postgres:15.1 image, specifying only one additional environment variable POSTGRES_PASSWORD=mysecretpassword.
+Using the command docker inspect, find the name of volume, which was created automatically for your container.
+Run command docker volume ls and find there the volume, which you found on the previous step.
+Using the command docker volume inspect, find the mountpoint on your host system for this volume. Check this location and find PostgreSQL files there.
+Run a container with name myalpine from alpine:3.17 image and using the argument --volumes-from mypostgres share the volume created for postgresql container.
+Using the docker inspect, check that this new container uses the same volume as postgresql container. Go inside the container and check the directory /var/lib/postgresql/data/.
+Task 3
+Using the command docker volume create create a volume with name my_volume. Verify your volume with command docker volume ls.
+Run PostgreSQL container from the previous task, but with name mypostgres2 and additional argument -v [host-src]:[container-dest], where [host-src] will be my_volume volume, [container-dest] will be /var/lib/postgresql/data/.
+Using the command docker volume inspect, find the mountpoint on your host system for your volume. Check this location and find PostgreSQL files there.
+Run container with name myalpine2 from alpine:3.17 image and using the argument --volumes-from mypostgres2 share the volume created for postgresql container.
+Using the docker inspect, check that this new container uses the same volume as postgresql container. Go inside the container and check the directory /var/lib/postgresql/data/.
+Task 4
+Run a container in detached mode with name tmpfs_container from nginx:1.23 image, specifying arguments --mount type=tmpfs,destination=/my_folder1 and -v /tmp:/my_folder2.
+Using the command docker inspect, find the configs for both these volumes and compare them.
+Using command docker exec, run shell command for this container and using the utility dd create 2 512 Mb files named speed_file in folders /my_folder1 and /my_folder2 and compare write speed for them. (Use the following command dd if=/dev/zero of=/my_folder1/speed_file bs=512M count=1). Output of dd command should be saved in a file named result in corresponding folder my_folder1 and my_folder2
+Inside the container create a file /my_folder1/my_file1 containing a string Hello from my_file1!. And also create a file /my_folder2/my_file2 containing a string Hello from my_file2!
+Exit from the container and with commands docker stop and docker rm stop and delete this container. After that check the content of the file /tmp/my_file2.
+Task 5
+Sub-task 1
+Run a container in detached mode with name backup_container from nginx:1.23 image, specifying an argument -v /etc/nginx.
+Launch a new container from alpine:3.17, mount the volume from backup_container container, mount the host directory /opt/docker/storage/task5 as /backup and pass a command which tars the content of the /etc/nginx to a backup.tar file inside /backup directory (tar cvf /backup/backup.tar /etc/nginx).
+After the completion of the backup, check the file /opt/docker/storage/task5/backup.tar on your local host.
+Sub-task 2
+Run a new container in detached mode with name restore_container from alpine:3.17, specifying an argument -v /etc/nginx and passing the command sleep infinity.
+Launch a new container from alpine:3.17, mount the volume from restore_container container, mount the host directory /opt/docker/storage/task5 as /backup and pass a command which untars the content of the /backup/backup.tar file to /etc/nginx directory (tar xvf /backup/backup.tar --strip 2 -C /etc/nginx). Check the content of the /etc/nginx directory in the restore_container container.
+Task 6
+Using the command docker volume create create a volume with name sidecar_volume.
+Run a container in detached mode with name producer from alpine:3.17 image with additional argument -v [host-src]:[container-dest] (where [host-src] will be sidecar_volume volume, [container-dest] will be /home) and also add the following command for this container: sh -c 'while sleep 5; do echo "Hello from EPAM!" >> /home/logs ; done'.
+Using the command docker exec go inside the container and check, that every 5 seconds a new line Hello from EPAM! is being added to the file /home/logs.
+Run a new container in detached mode with name consumer from alpine:3.17 image with additional argument -v [host-src]:[container-dest] (where [host-src] will be sidecar_volume volume, [container-dest] will be /opt) and also add the following command for this container: tail -f /opt/logs. This container will print every 5 seconds a new message from volume, which produce producer container.
+Tasks answers
+6/6 points
+Secret word for Task 1:
+iehohs8koonaYi
+  correct 
+Secret word for Task 2:
+jaaSheiD2ZahGa
+  correct 
+Secret word for Task 3:
+ohth7Goo3bahv1
+  correct 
+Secret word for Task 4:
+VohsheK9puFai7
+  correct 
+Secret word for Task 5:
+ieci2wuKo6koqu
+  correct 
+Secret word for Task 6:
+yah9meejahw4Pu
+  correct 
+Practical task
+All sub-tasks for this lesson should be done in /opt/docker/dockercompose directory. After completion, run checkup-compose in the same directory of course VM to verify your results. The command will check your work and show some secret phrases. The phrases should be entered into the appropriate fields below tasks.
+
+Install Docker Compose
+Define a simple service:
+Define frontend service using image phpmyadmin:5.2.0-apache.
+Use Dockerfile for building a custom image.
+Add package iputils-ping into the image.
+Start new defined service.
+Expose phpmyadmin service port 80 to your host port 8080.
+Define a custom network with name dockercompose-frontend and attach frontend to that network.
+Define another simple service:
+Define db service mydb. Use current LTS mariadb version image.
+Use Dockerfile for building a custom image.
+Add package iputils-ping into the image.
+Check connection between mydb and phpmyadmin services with ping.
+Attach mydb service to dockercompose-frontend network and check connection again.
+Configure phpmyadmin:
+Read related documentation.
+Set mysql server host and mysql server port via environment variables for phpmyadmin, use documentation from previous step.
+Define mysql data volume, attach it to mydb service. Mariadb should use it as data storage (by default it is /var/lib/mysql).
+Set healthcheck:
+Define mydb service healthcheck based on mysqladmin ping with interval 10s, timeout 15s, retries 5. See this page for more details.
+Try to break mysql service inside container by change datafile permissions or/and rename mysql data files, or play with healthcheck command including defining incorrect command.
+Check mysql container status/health.
+Fix mysql service, make sure healthcheck is ok.
+Define phpmyadmin service behavior start only if mydb service health is OK. Try to stop all services and start again. Make attention on container's start order.
+Using phpmyadmin sql editor create database, table in that database and insert rows, using following commands:
+create database mydb;
+
+use mydb;
+
+create table mytable ( id int AUTO_INCREMENT primary key, data text, datamodified timestamp default now());
+
+insert into mytable(data) values("testdata01");
+
+insert into mytable(data) values("testdata02");
+
+insert into mytable(data) values("testdata03");
+
+Make mysql dump using another mysql container, with attached volume for mysql backup. Save the dump to /opt/docker/dockercompose/task-13/mydb.sql.
+Tasks answers
+11/11 points
+Secret word for Task 1:
+hoh9leeMahCh1o
+  correct 
+Secret word for Task 2:
+Ahligievie2ahc
+  correct 
+Secret word for Task 3:
+ux6ahl8aht4OK2
+  correct 
+Secret word for Task 4:
+Igho5veh9Hifee
+  correct 
+Secret word for Task 5:
+shae7laeCh9eid
+  correct 
+Secret word for Tasks 6-7:
+ohh6iefu0Bupei
+  correct 
+Secret word for Task 8:
+Chio8eevaiGei4
+  correct 
+Secret word for Task 9:
+ahngohv3cuo6Ce
+  correct 
+Secret word for Task 10:
+ahNiteech4phee
+  correct 
+Secret word for Task 11:
+shuraiMi1eimoo
+  correct 
+Secret word for Task 13:
+uneishai1hahGe
+  correct 
+
+
+Final task
+The final task consists of two sub-tasks. Run checkup-final1 and checkup-final2 to check the first and second one accordingly. Each command will provide you with a secret phrase, which should be entered into appropriate field below the tasks
+
+Sub-task 1
+So this is the first sub-task, where you should gain all your skills together and create a small web-server infrastructure. Let's adjust Wordpress running on Apache web-server and using a standalone MySQL container as a database. Wordpress container can be adjusted using environment variables (or through UI), but let's create our own simple image to refresh knowledges.
+
+General notes:
+
+There are some templates, that should be used to solve this task, located at /opt/docker/source/final-task-1/. Copy them to /opt/docker/final-task1 and use it as your working directory. Run checkup-final1 in this directory as well.
+Please, use .yml instead of .yaml extension for the compose file
+Please, use the following volumes names (if you think volumes are needed): mysql for the DB and wordpress for the application
+Task: create a 2-containers infrastructure using orchestration tool (Docker-compose).
+
+Application: Wordpress running along with database.
+Container 1: web-server with Wordpress running on it
+Use the Dockerfile in the folder for building your image;
+Use wordpress:latest for your builts
+Wordpress apllication should be available at 8080 port. For example, http://VM_IP_ADDRESS:8080 should show Wordpress start page where you should choose the language
+Name of the container: my-awesome-wordpress;
+Use custom bridge network called my-awesome-network;
+To configure Wordpress use wp-config.php file. Pass it into the container /var/www/html directory;
+Check the default values in wp-config.php and adjust them if required:
+DB_NAME: wordpress -- defines the name of a DB for Wordpress;
+DB_USER: wordpress -- defines the the name of DB user for Wordpress;
+DB_PASSWORD: wordpress -- defines a password for the DB;
+DB_HOST: localhost:3306 -- defines an endpoint the DB is accessible via;
+wp-config.php file is owned by root initially. Its owner and owner's group should be www-data inside the container for Wordpress to work properly - bear this in mind while building your image;
+Container should always restart in case of failures but not when stopped explicitly;
+Note: Configuration should persist even when the container has restarted!
+Container 2: DB container running a MySQL database with some custom configuration:
+Name of the container: my-awesome-database;
+This container should always start first -- don't forget to build a dependency between the DB and Wordpress;
+Use mysql:5.7 image;
+Use environment variables to configure access. See the official image documentation for more information regarding configuration;
+Make sure your awesome Wordpress and Database can communicate to each other using container names;
+Container should always restart in case of failures but not when stopped explicitly;
+Note: DB files should persist even when the container has restarted!
+Subtask 1 Answer
+1/1 point
+Sub-task 1 secret phrase:
+yiepoWeexoo0ge
+  correct 
+
+Submit
+Some problems have options such as save, reset, hints, or show answer. These options follow the Submit button.
+Sub-task 2
+This is the second sub-task. Our client wants us to start the best vet clinic application ever so everyone can be sure that their lovely pets are healthy and happy ^_^. But the team's got a totally screwed up environment. Let's fix it.
+
+General notes:
+
+There are some templates, that should be used to solve this task, located at /opt/docker/source/final-task-2/. Copy them to /opt/docker/final-task2 and use it as your working directory. Run checkup-final2 in this directory as well.
+Please, use .yml instead of .yaml extension for the compose file
+Environment description:
+
+Compose file called docker-compose.yml is used. It servers 2 containers, volumes and Petclinic network. The copy of this file should be in your working directory.
+Petclinic application running in the container and accessible on 8080 port inside and outside the container. Container uses an image built from Dockerfile file. The copy of this file should be in your working directory.
+Database engine running in a separate container and using hlebsur/mysql:8 image. This image contains a hint in its metadata.
+Acceptance criteria for the task:
+
+Petclinic app is accessible from the browser on 8080 port.
+You can see doctors lists and be able to make view/change pet owners list
+Application container status is healthy for the whole lifecycle
+You can check DB image metadata for the hint.
+Some hints:
+
+Check logs for your app container. Observing a beautiful healthy cat taking his regular nap on the logo means the application has started correctly, and you can try to reach it via the browser. But it doesn't actually mean that everything is working. Make sure you can view lists of clients, doctors and make/save changes to them.
+Pay attention to the java command passed in the Dockerfile.
+Subtask 2 Answer
+1/1 point
+Sub-task 2 secret phrase:
+ohtoocojah4Pha
+  correct
